@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="CONSOLE_LOG_PATTERN" value="%highlight(%-4level){'TRACE':'gray', 'DEBUG':'gray', 'INFO':'green', 'WARN':'yellow', 'ERROR':'red'} %cyan(%d{HH:mm:ss}) %blue(%logger{36}) - %msg%n"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate.orm.connections.pooling" level="WARN" />
+
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
