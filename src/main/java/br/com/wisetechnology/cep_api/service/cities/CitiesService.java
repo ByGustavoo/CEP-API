@@ -30,7 +30,7 @@ public class CitiesService {
                 List<CitiesDTO> cities = getAllCitiesByState(stateDTO);
 
                 cities.forEach(city -> saveCity(stateId, city));
-                log.info("[Cidades] - As Cidades do Estado: {}, foram salvas com sucesso!", stateDTO.getNome().toUpperCase());
+                log.info("[Cidades] - As Cidades do Estado: {}, foram salvas com sucesso!", stateDTO.getNome());
             }
 
             log.info("[Cidades] - Todas as Cidades foram salvas com sucesso!");
@@ -40,7 +40,7 @@ public class CitiesService {
     }
 
     private List<CitiesDTO> getAllCitiesByState(StateDTO pStatesDTO) {
-        log.info("[Cidades] - Buscando informações das cidades do Estado: {}", pStatesDTO.getNome().toUpperCase());
+        log.info("[Cidades] - Buscando informações das cidades do Estado: {}", pStatesDTO.getNome());
         String url = String.format("https://brasilapi.com.br/api/ibge/municipios/v1/%s?providers=dados-abertos-br,gov,wikipedia", pStatesDTO.getSigla());
 
         return webClient.get()

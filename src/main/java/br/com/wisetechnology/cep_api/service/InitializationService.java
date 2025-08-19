@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
 import java.util.Comparator;
 
 @Slf4j
@@ -26,7 +25,7 @@ public class InitializationService {
 
     @Scheduled(initialDelay = 60000)
     public void setUp() {
-        log.info("Iniciando Processo de Configuração do Sistema!");
+        log.info("[Sistema] - Iniciando Processo de Configuração do Sistema!");
         var states = stateService.getAllStates().stream()
                 .sorted(Comparator.comparing(StateDTO::getNome))
                 .toList();
@@ -35,6 +34,6 @@ public class InitializationService {
         stateService.processStateData(states);
         citiesService.processCitiesData(states);
 
-        log.info("Configuração do Sistema realizada com sucesso!");
+        log.info("[Sistema] - Configuração do Sistema realizada com sucesso!");
     }
 }
