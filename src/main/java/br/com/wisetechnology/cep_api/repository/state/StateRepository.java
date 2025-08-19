@@ -37,6 +37,20 @@ public class StateRepository {
                 .update();
     }
 
+    public Integer findStateIdBySigla(String pSigla) {
+
+        String query = """
+                SELECT id
+                FROM cep.estados e
+                WHERE e.sigla LIKE :pSigla;
+                """;
+
+        return jdbcClient.sql(query)
+                .param("pSigla", pSigla)
+                .query(Integer.class)
+                .single();
+    }
+
     private Integer findRegionIdBySigla(String pSigla) {
 
         String query = """
